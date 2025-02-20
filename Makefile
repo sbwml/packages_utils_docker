@@ -1,7 +1,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=docker
-PKG_VERSION:=27.5.1
+PKG_VERSION:=28.0.0
 PKG_RELEASE:=1
 PKG_LICENSE:=Apache-2.0
 PKG_LICENSE_FILES:=LICENSE
@@ -10,8 +10,8 @@ PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_GIT_URL:=github.com/docker/cli
 PKG_GIT_REF:=v$(PKG_VERSION)
 PKG_SOURCE_URL:=https://codeload.$(PKG_GIT_URL)/tar.gz/$(PKG_GIT_REF)?
-PKG_HASH:=abd16e3911bc7bbd00596ebe4f58baf3d577160d99eefd749a908507ddfc587b
-PKG_GIT_SHORT_COMMIT:=9f9e405 # SHA1 used within the docker executables
+PKG_HASH:=aad1d43cde6d28538a2f76d52ce9fb3e92677b4e1cca2e5bcc1b612af3d63bff
+PKG_GIT_SHORT_COMMIT:=f9ced58 # SHA1 used within the docker executables
 
 PKG_MAINTAINER:=Gerard Ryan <G.M0N3Y.2503@gmail.com>
 
