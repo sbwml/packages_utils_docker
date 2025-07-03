@@ -15,14 +15,14 @@ PKG_GIT_SHORT_COMMIT:=38b7060 # SHA1 used within the docker executables
 
 PKG_MAINTAINER:=Gerard Ryan <G.M0N3Y.2503@gmail.com>
 
-PKG_BUILD_DEPENDS:=golang/host
+PKG_BUILD_DEPENDS:=golang/host dockerd
 PKG_BUILD_PARALLEL:=1
 PKG_BUILD_FLAGS:=no-mips16
 
 GO_PKG:=$(PKG_GIT_URL)
 
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/golang/golang-package.mk
+include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 define Package/docker
   SECTION:=utils
@@ -36,13 +36,13 @@ define Package/docker/description
 The CLI used in the Docker CE and Docker EE products.
 endef
 
-GO_PKG_BUILD_VARS += GO111MODULE=auto
+GO_PKG_INSTALL_EXTRA:=\
+	cli/compose/schema/data \
+	vendor/google.golang.org/protobuf/internal/editiondefaults/editions_defaults.binpb
+
 TAR_OPTIONS:=--strip-components 1 $(TAR_OPTIONS)
 TAR_CMD=$(HOST_TAR) -C $(1) $(TAR_OPTIONS)
 TARGET_LDFLAGS += $(if $(CONFIG_USE_GLIBC),-lc -lgcc_eh)
-GO_PKG_INSTALL_EXTRA:= \
-	cli/compose/schema/data \
-	vendor/google.golang.org/protobuf/internal/editiondefaults
 
 define Build/Prepare
 	$(Build/Prepare/Default)
