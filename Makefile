@@ -38,8 +38,9 @@ endef
 
 GO_PKG_INSTALL_EXTRA:=\
 	cli/compose/schema/data \
+	vendor/github.com/santhosh-tekuri/jsonschema/v6/metaschemas \
 	vendor/google.golang.org/protobuf/internal/editiondefaults/editions_defaults.binpb
-
+    
 TAR_OPTIONS:=--strip-components 1 $(TAR_OPTIONS)
 TAR_CMD=$(HOST_TAR) -C $(1) $(TAR_OPTIONS)
 TARGET_LDFLAGS += $(if $(CONFIG_USE_GLIBC),-lc -lgcc_eh)
